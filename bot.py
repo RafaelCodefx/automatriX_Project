@@ -37,6 +37,18 @@ try:
                 if comando_text.lower() == 'google':
                     driver.get('https://google.com')
 
+                #hora
+                if comando_text.lower() == 'hora':
+                    from datetime import datetime
+                    now = datetime.now()
+                    resposta = now.strftime('%d/%m/%Y %H:%M:%S')
+                    cnvs = driver.find_element(By.XPATH, '//span[@title="Rosilei"]').click()
+                    time.sleep(3)
+                    driver.find_element(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]').send_keys(resposta)
+                    driver.find_element(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[2]/button').click()
+
+               
+
                 
         except NoSuchElementException:
             time.sleep(1)  # espera 1 segundo antes de tentar novamente
